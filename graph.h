@@ -13,5 +13,6 @@ typedef struct {
 t_graph * create_graph(int vertices);
 void insert_edge(t_graph *graph, int src, int dest);
 void print_graph(t_graph *graph);
+char * graph_labels(int size);
 
 #endif

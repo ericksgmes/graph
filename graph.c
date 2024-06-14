@@ -24,9 +24,18 @@ void insert_edge(t_graph *graph, int src, int dest) {
     graph->adj_matrix[src][dest] = 1;
 }
 
-void print_graph(t_graph *graph) {
-    char labels[] = {'A', 'B', 'C', 'D', 'E'};
+char* graph_labels(int size) {
+    char* letters = (char*)malloc(size * sizeof(char));
 
+    for (int i = 0; i < size; i++) {
+        letters[i] = 'A' + i % 26;
+    }
+
+    return letters;
+}
+
+void print_graph(t_graph *graph) {
+    char * labels = graph_labels(graph->num_vertices);
     printf("   ");
     for (int i = 0; i < graph->num_vertices; ++i) {
         printf("%c", labels[i]);
@@ -44,5 +53,6 @@ void print_graph(t_graph *graph) {
         printf("\n");
     }
 }
+
 
 
