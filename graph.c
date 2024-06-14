@@ -24,3 +24,25 @@ void insert_edge(t_graph *graph, int src, int dest) {
     graph->adj_matrix[src][dest] = 1;
 }
 
+void print_graph(t_graph *graph) {
+    char labels[] = {'A', 'B', 'C', 'D', 'E'};
+
+    printf("   ");
+    for (int i = 0; i < graph->num_vertices; ++i) {
+        printf("%c", labels[i]);
+        printf("   ");
+    }
+    printf("\n");
+
+    for (int i = 0; i < graph->num_vertices; ++i) {
+        printf("%c  ", labels[i]);
+        for (int j = 0; j < graph->num_vertices; ++j) {
+            printf("%d", graph->adj_matrix[i][j]);
+            printf("   ");
+
+        }
+        printf("\n");
+    }
+}
+
+
