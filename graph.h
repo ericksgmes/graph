@@ -5,5 +5,9 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+typedef struct {
+    int num_vertices;
+    int **adj_matrix;
+} t_graph;
 
 #endif
