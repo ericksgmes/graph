@@ -20,3 +20,7 @@ t_graph * create_graph(int vertices) {
     return graph;
 }
 
+void insert_edge(t_graph *graph, int src, int dest) {
+    graph->adj_matrix[src][dest] = 1;
+}
+
