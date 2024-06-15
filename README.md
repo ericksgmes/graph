@@ -1,12 +1,20 @@
-# Simple Graph Implementation Using Adjacency Matrix
+# Simple Graph Implementation Using Adjacency Matrix and Adjacency List
 
-This program provides a simple implementation of a graph using an adjacency matrix. The adjacency matrix is a 2D array where the entry `matrix[i][j]` represents an edge from vertex `i` to vertex `j`.
+This program provides a simple implementation of a graph using both an adjacency matrix and an adjacency list.
 
 ## Usage
 
-1. **Create a Graph**: Use the `create_graph` function to create a graph with a specified number of vertices.
-2. **Insert Edges**: Use the `insert_edge` function to insert edges between vertices.
-3. **Print Graph**: Use the `print_graph` function to print the adjacency matrix of the graph.
+1. **Create a Graph**: 
+   - Use `create_adj_matrix(int vertices)` for an adjacency matrix.
+   - Use `create_adj_list(int vertices)` for an adjacency list.
+
+2. **Insert Edges**:
+   - Use `insert_adj_matrix(t_graph *graph, int src, int dest)` for the adjacency matrix.
+   - Use `insert_adj_list(t_graph *graph, int src, int dest)` for the adjacency list.
+
+3. **Print Graph**:
+   - Use `print_graph(t_graph *graph)` to print the adjacency matrix.
+   - Use `print_adj_list(t_graph *graph)` to print the adjacency list.
 
 ## Example
 
@@ -15,35 +23,33 @@ This program provides a simple implementation of a graph using an adjacency matr
 #include <stdio.h>
 
 int main() {
-    // Create a graph with 5 vertices
-    t_graph *graph = create_graph(5);
-
-    // Insert edges
-    insert_edge(graph, 0, 1);
-    insert_edge(graph, 0, 2);
-    insert_edge(graph, 1, 2);
-    insert_edge(graph, 2, 3);
-    insert_edge(graph, 3, 4);
-
-    // Print the graph
+    // Adjacency Matrix Example
+    t_graph *matrix_graph = create_adj_matrix(5);
+    insert_adj_matrix(matrix_graph, 0, 1);
+    insert_adj_matrix(matrix_graph, 0, 2);
+    insert_adj_matrix(matrix_graph, 1, 2);
+    insert_adj_matrix(matrix_graph, 2, 3);
+    insert_adj_matrix(matrix_graph, 3, 4);
     printf("Adjacency Matrix:\n");
-    print_graph(graph);
+    print_graph(matrix_graph);
+
+    // Adjacency List Example
+    t_graph *list_graph = create_adj_list(5);
+    insert_adj_list(list_graph, 0, 1);
+    insert_adj_list(list_graph, 0, 4);
+    insert_adj_list(list_graph, 1, 2);
+    insert_adj_list(list_graph, 1, 3);
+    insert_adj_list(list_graph, 1, 4);
+    insert_adj_list(list_graph, 2, 3);
+    insert_adj_list(list_graph, 3, 4);
+    printf("Adjacency List:\n");
+    print_adj_list(list_graph);
 
     return 0;
 }
 ```
 
-## Functions
+## Graph Structures
 
-- `t_graph * create_graph(int vertices)`: Creates a graph with the specified number of vertices.
-- `void insert_edge(t_graph *graph, int src, int dest)`: Inserts an edge between the source and destination vertices.
-- `void print_graph(t_graph *graph)`: Prints the adjacency matrix of the graph.
-
-## Graph Struct
-
-```c
-typedef struct {
-    int num_vertices;
-    int **adj_matrix;
-} t_graph;
-```
+- `t_graph`: Contains the number of vertices and the adjacency structure.
+- `t_adj_node`: Represents a node in the adjacency list.
